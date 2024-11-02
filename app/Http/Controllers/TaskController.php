@@ -10,10 +10,16 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $tasks = Task::query()
+        ->when($request->has('q') ??  false, function($query) use($request){
+            $query->where('title', 'like', '%' . $request->q . '%');
+        })->get();
+
+
         return view('tasks.index', [
-            'tasks' => Task::all()
+            'tasks' => $tasks
         ]);
     }
 

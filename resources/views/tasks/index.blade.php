@@ -3,12 +3,27 @@
 <div class="container">
 <div class="d-flex justify-content-between mb-2">
         <h2>Доп опции</h2>
+
+        <div>
+            <form action="{{ route('tasks.index') }}" method="get">
+            
+            <input type="text" placeholder="Поиск" name="q">
+
+                <buttn type="submit" class="btn btn-primary btn-icon">
+                    <i class="feather icon-search"></i>
+                    Поиск
+                </button>
+            </form>
+
+        </div>
+
         <div>
             <a href="{{ route('tasks.create') }}" class="btn btn-primary btn-icon">
                 <i class="feather icon-plus-circle"></i>
                 Добавить
             </a>
         </div>
+
     </div>
     <div class="card">
         <table class="table mb-0">
